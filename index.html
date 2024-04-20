@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Launcher</title>
+    <style>
+        /* Add your CSS styles here */
+    </style>
+</head>
+<body>
+    <h1>Welcome to Game Launcher</h1>
+    
+    <h2>Upload Your Game</h2>
+    <form id="gameUploadForm">
+        <input type="file" id="gameFile" accept=".exe" required>
+        <button type="submit">Upload</button>
+    </form>
+    
+    <h2>Available Games</h2>
+    <div id="gameList">
+        <!-- Display list of available games here -->
+    </div>
+    
+    <script>
+        // JavaScript code to handle game uploading and listing
+        document.getElementById('gameUploadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var gameFile = document.getElementById('gameFile').files[0];
+            
+            // Send game file to email (this is a simplified example)
+            var formData = new FormData();
+            formData.append('gameFile', gameFile);
+            formData.append('email', 'aaravsinghchahal@gmail.com');
+            
+            // Here, you would send formData to your server using AJAX or fetch
+            
+            alert('Game uploaded successfully!');
+        });
+        
+        // Sample function to display list of available games (this is a simplified example)
+        function displayGameList() {
+            var gameList = document.getElementById('gameList');
+            
+            // Clear existing list
+            gameList.innerHTML = '';
+            
+            // Sample game data (replace with actual data)
+            var games = [
+                { name: 'Game 1', downloadLink: 'game1.exe' },
+                { name: 'Game 2', downloadLink: 'game2.exe' }
+            ];
+            
+            // Display each game
+            games.forEach(function(game) {
+                var gameItem = document.createElement('div');
+                gameItem.innerHTML = '<p>' + game.name + '</p><a href="' + game.downloadLink + '">Download</a>';
+                gameList.appendChild(gameItem);
+            });
+        }
+        
+        // Call displayGameList function to initially display available games
+        displayGameList();
+    </script>
+</body>
+</html>
